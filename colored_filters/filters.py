@@ -93,7 +93,7 @@ cartoon_image = apply_cartoon(image)
 
 negative_image = apply_negative(image)
 
-clay_image = apply_clay(image)
+# clay_image = apply_clay(image)
 while True:
     ######### display normal image ###########
 #     cv2.resizeWindow('normal_image', 1000, 1000)
@@ -101,12 +101,11 @@ while True:
     cv2.imshow('normal_image', image)
     
     ########## display filter image #########
-#     cv2.resizeWindow('sepia_image', 1000, 1000)
-#     cv2.imshow('cartoon_image', cartoon_image)
-#     cv2.imshow('sepia_image', sepia_image)
-#     cv2.imshow('bw_image', black_white_image)
-#     cv2.imshow('negative', negative_image)
-    cv2.imshow('clay_image', clay_image)
+    cv2.imshow('cartoon_image', cartoon_image)
+    cv2.imshow('sepia_image', sepia_image)
+    cv2.imshow('bw_image', black_white_image)
+    cv2.imshow('negative', negative_image)
+#     cv2.imshow('clay_image', clay_image)
     if cv2.waitKey(3) & 0xff == 27:
         break
         
