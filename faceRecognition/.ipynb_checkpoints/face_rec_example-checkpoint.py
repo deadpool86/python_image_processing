@@ -14,6 +14,8 @@ print('Loading known faces...')
 known_faces = []
 known_names = []
 
+
+
 for name in os.listdir(KNOWN_FACES_DIR): #loads the dir in the known_faces_folder
 #     print(name)
     
@@ -34,8 +36,6 @@ print(len(known_faces))
 
 
 
-#unknown faces has some image 
-UNKNOWN_FACES_DIR = 'unknown_faces_test'
 
 # take each image in unknown_faces
 for filename in os.listdir(UNKNOWN_FACES_DIR):
@@ -90,23 +90,47 @@ for filename in os.listdir(UNKNOWN_FACES_DIR):
         ####### show a rectangle on the face
         top_left = (left, top)
         bottom_right = (right, bottom)
-        
         cv2.rectangle(image, top_left, bottom_right, (0, 255, 0), 5)
         
-        ###### show the name of the person below the rectangle
+        ###### show the name of the person below the rectangle #########
         font = cv2.FONT_HERSHEY_COMPLEX
-        cv2.putText(image, name, (left + 10, bottom + 15), font, 0.5, (200, 200, 200), 10)
+        width, height, channels = image.shape
+        fontScale = 0
+        thickness = 0
+        color = (0, 0, 255)
+        if height <= 2000:
+            fontScale = 1
+            thickness = 2
+            
+        else :
+            fontScale = 4
+            thickness = 8
         
+        
+        
+        cv2.putText(image, name, (left + 10, bottom + 15), font, fontScale, color, thickness)
+        ###########################################################
         
     ######### get the name from the names_in_the_image and push the image to that folder ########
+    print(f'writing file {filename} to its respective location...')
     for name in names_in_the_image:
         
         ########## get folder by name #######
-#         path = os.path.join(KNOWN_FACES_DIR, name)
+        path = os.path.join(KNOWN_FACES_DIR, name)
         
 #         ###### write the image in this path ###########
-#         cv2.imwrite(f'{KNOWN_FACES_DIR}/{name}/{filename}', image)
+        cv2.imwrite(f'{KNOWN_FACES_DIR}/{name}/_unknown_image_{filename}', image)
         print(f'{name} ')
+    
+    
+    ############ resize the image before display ##########
+    
+    cv2.namedWindow('image', cv2.WINDOW_NORMAL)
+    final_image = cv2.resize(image, (640, 480))
+    cv2.imshow('image', final_image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+    # 
     print("\n")
         
 #         shutil.copy(image, path)
