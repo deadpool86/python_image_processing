@@ -7,7 +7,7 @@ image = cv2.imread('flower.jpeg')
 
 ####### global variables ##############
 blurring = False
-height, width = 30, 30
+height, width = 60, 60
 # prev_x, prev_y = 0, 0
 
 

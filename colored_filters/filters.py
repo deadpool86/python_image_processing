@@ -93,6 +93,16 @@ cartoon_image = apply_cartoon(image)
 
 negative_image = apply_negative(image)
 
+############################################################
+########## save the images to destination folder ###########
+cv2.imwrite('sepia.jpg', sepia_image)
+cv2.imwrite('black_white.jpg', black_white_image)
+cv2.imwrite('cartoon.jpg', cartoon_image)
+cv2.imwrite('negative.jpg', negative_image)
+
+
+
+
 # clay_image = apply_clay(image)
 while True:
     ######### display normal image ###########
