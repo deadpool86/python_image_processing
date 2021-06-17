@@ -10,7 +10,7 @@ FRAME_THICKNESS = 3
 FONT_THICKNESS = 2
 MODEL = 'hog'  
 
-print('Loading known faces...')
+print('Loading known faces......')
 known_faces = []
 known_names = []
 
